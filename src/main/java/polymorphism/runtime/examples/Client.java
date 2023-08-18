@@ -5,18 +5,8 @@ import inheritance.constructors.D;
 public class Client {
 
     public static void main(String[] args) {
-
-        C c = new C();
-        c.greet();
-
-       // C dd = new B(); XX
-        B dd = new C();
-        dd.greet();
-
-
-        A aa = new C();
-        aa.greet();
-
+       A b = new B();
+       b.printHello();
 
     }
 }
