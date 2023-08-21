@@ -12,12 +12,12 @@ public class Client {
                 10, 2, 8, 11, 4, 3, 9, 1
         );
 
-        //ExecutorService es = Executors.newCachedThreadPool();
-        Sorter sorter = new Sorter(arrayToSort);
-        List<Integer> sortedList = sorter.call();
+        ExecutorService es = Executors.newCachedThreadPool();
+        Sorter sorter = new Sorter(arrayToSort,es);
+        Future<List<Integer>> sortedListFuture = es.submit(sorter);
        // Future<List<Integer>> sortedListFuture = es.submit(sorter);
 
-        //List<Integer> sortedList = sortedListFuture.get();
+        List<Integer> sortedList = sortedListFuture.get(); // BLOCKING CALL
         for (Integer in: sortedList) {
             System.out.println(in);
         }

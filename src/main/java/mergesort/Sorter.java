@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Sorter implements Callable<List<Integer>> {
 
     private List<Integer> arrayToSort;
+    private ExecutorService executorService;
 
-    public Sorter(List<Integer> arrayToSort) {
+    public Sorter(List<Integer> arrayToSort,ExecutorService es) {
         this.arrayToSort = arrayToSort;
+        this.executorService = es;
     }
 
     @Override
     public List<Integer> call() throws Exception {
-        System.out.println("call ThreadName: " + Thread.currentThread().getName());
+        System.out.println("call ThreadName: " + Thread.currentThread().getName()
+        + " Array is:  " + arrayToSort);
         // S1: Base Case
         if(arrayToSort.size() <= 1){
             return arrayToSort;
@@ -37,20 +40,23 @@ public class Sorter implements Callable<List<Integer>> {
         }
 
         // s3 HOW DO WE CALL the MERGE SORT?
-        Sorter leftSorter = new Sorter(leftArray);
-        Sorter rightSorter = new Sorter(rightArray);
+        Sorter leftSorter = new Sorter(leftArray,executorService);
+        Sorter rightSorter = new Sorter(rightArray,executorService);
 
 
-        //ExecutorService ee = Executors.newCachedThreadPool();
-        List<Integer> leftSortedArray = leftSorter.call();
-        List<Integer> rightSortedArray = rightSorter.call();
+        Future<List<Integer>> leftSortedArrayFuture = executorService.submit(leftSorter);
+        Future<List<Integer>> rightSortedArrayFuture = executorService.submit(rightSorter);
 
         // WE have gotten the sorted arrays. We need to merge them Now
 
+        // IT WILL BE BLOCKING CALL AFTER THIS LINE.
         List<Integer> sortedArray = new ArrayList<>();
         // s4 USING TWO POINTERS
 
         int i=0, j=0;
+
+        List<Integer> leftSortedArray = leftSortedArrayFuture.get();
+        List<Integer> rightSortedArray = rightSortedArrayFuture.get();
 
         while(i < leftSortedArray.size() && j < rightSortedArray.size()){
             if(leftSortedArray.get(i) < rightSortedArray.get(j)){
