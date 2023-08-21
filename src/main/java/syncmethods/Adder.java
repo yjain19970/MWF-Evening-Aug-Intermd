@@ -1,4 +1,6 @@
-package addsubsync;
+package syncmethods;
+
+import java.util.concurrent.locks.Lock;
 
 public class Adder implements Runnable {
     private Count count;
@@ -10,10 +12,8 @@ public class Adder implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 1; i <= 10000; ++i) {
-            synchronized (count){
-                count.value += i; // CRITICAL SECTION
-            }
+        for (int i = 1; i <= 100000; ++i) {
+            count.incrementValue(i);
         }
     }
 }
