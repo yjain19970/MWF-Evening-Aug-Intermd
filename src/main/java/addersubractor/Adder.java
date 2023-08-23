@@ -11,7 +11,8 @@ public class Adder implements Runnable {
     @Override
     public void run() {
         for (int i = 1; i <= 10000; ++i) {
-            count.value += i; // CRITICAL SECTION
+            //count.value += i; // CRITICAL SECTION
+            count.value.addAndGet(i);
         }
     }
 }

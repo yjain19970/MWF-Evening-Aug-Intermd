@@ -10,7 +10,8 @@ public class Subtractor implements Runnable {
     @Override
     public void run() {
         for (int i = 1; i <= 10000; ++i) {
-            this.count.value -= i; // CRITICAL SECTION
+            //this.count.value -= i; // CRITICAL SECTION
+            count.value.addAndGet(-i);
         }
     }
 }
