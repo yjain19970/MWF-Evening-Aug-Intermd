@@ -10,7 +10,7 @@ public class Client {
         Student isCopy = registry.get("wed_13_sept_is").clone();
 
         System.out.println(copy);
-
+        System.out.println(isCopy);
     }
 
     private static void fillRegistry(StudentRegistry registry) {
