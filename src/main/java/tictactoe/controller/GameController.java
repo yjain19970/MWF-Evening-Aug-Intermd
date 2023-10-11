@@ -8,7 +8,7 @@ import tictactoe.strategy.winning.GameWinningRule;
 import java.util.List;
 
 public class GameController {
-    public void makeMove(Game game){
+    public void makeMove(Game game) throws Exception {
         game.makeMove();
     }
 

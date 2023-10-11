@@ -9,6 +9,14 @@ public class Move {
         this.player = player;
     }
 
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     public Cell getCell() {
         return cell;
     }

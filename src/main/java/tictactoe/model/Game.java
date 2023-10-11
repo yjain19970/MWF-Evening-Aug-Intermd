@@ -1,6 +1,6 @@
 package tictactoe.model;
 
-import inheritance.constructors.B;
+import tictactoe.model.types.CellState;
 import tictactoe.model.types.GameState;
 import tictactoe.model.types.PlayerType;
 import tictactoe.strategy.winning.GameWinningRule;
@@ -51,23 +51,76 @@ public class Game {
         return new Builder();
     }
 
-    public void makeMove() {
-        // S1: I need the index for player for which move has to be done
-        // S2. ask player to make a move
-        // S3. validate the move
-        // S4. update the cell on board
-        // S5. update nextPlayerTurn Index
+    public void makeMove() throws Exception {
+        // DS1: I need the index for player for which move has to be done
+        // DS2. ask player to make a move
+        // DS3. validate the move
+        // DS4. update the cell on board
+        // DS5. update nextPlayerTurn Index
         // S6. checkWinner
 
+       Player currPlayer = players.get(nextPlayerIndex);
 
+       Move currMove =  currPlayer.makeMove();
 
+       if(!validateMove(currMove)){
+           throw new Exception();
+       }
 
+        int row = currMove.getCell().getRow();
+        int col = currMove.getCell().getCol();
+
+        Cell cellToBeUpdated = getBoard().getCells()
+                .get(row).get(col);
+        cellToBeUpdated.setCellState(CellState.FILLED);
+        cellToBeUpdated.setPlayer(currMove.getPlayer());
+
+        currMove.setCell(cellToBeUpdated);
+        playerMoves.add(currMove);
+
+        nextPlayerIndex++;
+        nextPlayerIndex %= players.size();
+
+        if(checkWinner(board,currMove)){
+            gameState = GameState.END;
+            winnerPlayer = currPlayer;
+        }else if(playerMoves.size() == board.getSize()*board.getSize()){
+                gameState = GameState.DRAW;
+        }
+    }
+
+    private boolean checkWinner(Board board, Move currMove) {
+        for(GameWinningRule rule : winningRules){
+            if(rule.checkWinner(board,currMove)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean validateMove(Move currMove) {
+        if(currMove.getCell().getCellState().equals(CellState.FILLED)){
+            return false;
+        }
+
+        int row = currMove.getCell().getRow();
+        int col = currMove.getCell().getCol();
+
+        if (row >= board.getSize()) {
+            return false;
+        }
+        if (col >= board.getSize()) {
+            return false;
+        }
+
+        return true;
     }
 
     public void undo() {
     }
 
     public void printBoard() {
+        board.printBoard();
     }
 
     // players: n-1
@@ -111,7 +164,7 @@ public class Game {
         }
 
         private void validateForNumberOfPlayers() throws Exception {
-            if(players.size()-1 != dimension){
+            if(players.size() == dimension){
                 throw new Exception();
             }
         }

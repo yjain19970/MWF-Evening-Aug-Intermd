@@ -12,21 +12,23 @@ import tictactoe.strategy.winning.RowWinningRule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 // SIMULATOR.
 public class Client {
     public static void main(String[] args) throws Exception {
         // user's perspective.
         GameController gameController = new GameController();
+        Scanner sc = new Scanner(System.in);
 
         List<Player> players = new ArrayList<>();
         players.add(new Player("Mohsin", 1,
                 new Symbol('X'),
-                PlayerType.HUMAN));
+                PlayerType.HUMAN,sc));
 
         players.add(new Player("Sridhar", 2,
                 new Symbol('0'),
-                PlayerType.HUMAN));
+                PlayerType.HUMAN,sc));
 
         List<GameWinningRule> rules = new ArrayList<>();
         rules.add(new RowWinningRule());
@@ -35,7 +37,7 @@ public class Client {
         Game game = gameController.startGame(players, rules, 3);
 
         // FROM HERE.
-        while(!game.getGameState().equals(GameState.IN_PROGRESS)){
+        while(game.getGameState().equals(GameState.IN_PROGRESS)){
             gameController.printBoard(game);
 
             gameController.makeMove(game);
