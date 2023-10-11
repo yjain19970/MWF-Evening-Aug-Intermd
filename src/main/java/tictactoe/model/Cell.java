@@ -11,15 +11,12 @@ public class Cell {
     public Integer getRow() {
         return row;
     }
-
     public Integer getCol() {
         return col;
     }
-
     public CellState getCellState() {
         return cellState;
     }
-
     public Player getPlayer() {
         return player;
     }
