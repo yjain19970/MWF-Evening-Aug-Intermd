@@ -1,9 +1,11 @@
 package tictactoe;
 
 import tictactoe.controller.GameController;
+import tictactoe.model.Bot;
 import tictactoe.model.Game;
 import tictactoe.model.Player;
 import tictactoe.model.Symbol;
+import tictactoe.model.types.BotDifficultyLevel;
 import tictactoe.model.types.GameState;
 import tictactoe.model.types.PlayerType;
 import tictactoe.strategy.winning.ColumnWinningRule;
@@ -26,9 +28,9 @@ public class Client {
                 new Symbol('X'),
                 PlayerType.HUMAN,sc));
 
-        players.add(new Player("Sridhar", 2,
+        players.add(new Bot("Sridhar", 2,
                 new Symbol('0'),
-                PlayerType.HUMAN,sc));
+                PlayerType.BOT,sc, BotDifficultyLevel.EASY));
 
         List<GameWinningRule> rules = new ArrayList<>();
         rules.add(new RowWinningRule());

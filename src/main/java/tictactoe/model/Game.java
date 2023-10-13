@@ -59,7 +59,15 @@ public class Game {
         // DS5. update nextPlayerTurn Index
         // S6. checkWinner
 
+
        Player currPlayer = players.get(nextPlayerIndex);
+
+       if(currPlayer.getType().equals(PlayerType.BOT)){
+            // BotPlayingStrategy....
+            // s1. Create a factory for BotRule
+           //  s2: Get Easy/Med/Hard rule by BotDifficultyLevel
+           //  s3: Call botPlayingStrategy.makeBotMove();
+       }
 
        System.out.println("It is Player: "+ currPlayer.getName()+" turn...");
 
