@@ -40,6 +40,14 @@ public class Client {
         while(game.getGameState().equals(GameState.IN_PROGRESS)){
             gameController.printBoard(game);
 
+            System.out.println("Does someone want to do Undo? Press y OR n.. ");
+            String undoStr = sc.next();
+
+            if(undoStr.equals("y")){
+                gameController.undo(game);
+                continue;
+            }
+
             gameController.makeMove(game);
         }
 

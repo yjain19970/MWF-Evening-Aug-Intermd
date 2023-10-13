@@ -6,4 +6,6 @@ import tictactoe.model.Move;
 public interface GameWinningRule {
 
     boolean checkWinner(Board board, Move move);
+
+    void handleUndo(Move move);
 }

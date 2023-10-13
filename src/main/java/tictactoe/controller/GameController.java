@@ -12,7 +12,7 @@ public class GameController {
         game.makeMove();
     }
 
-    public void undo(Game game){
+    public void undo(Game game) throws Exception {
         game.undo();
     }
 

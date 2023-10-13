@@ -61,6 +61,8 @@ public class Game {
 
        Player currPlayer = players.get(nextPlayerIndex);
 
+       System.out.println("It is Player: "+ currPlayer.getName()+" turn...");
+
        Move currMove =  currPlayer.makeMove();
 
        if(!validateMove(currMove)){
@@ -76,7 +78,7 @@ public class Game {
         cellToBeUpdated.setPlayer(currMove.getPlayer());
 
         currMove.setCell(cellToBeUpdated);
-        playerMoves.add(currMove);
+        playerMoves.add(currMove); // list<Move>
 
         nextPlayerIndex++;
         nextPlayerIndex %= players.size();
@@ -116,7 +118,28 @@ public class Game {
         return true;
     }
 
-    public void undo() {
+    public void undo() throws Exception {
+        // HERE
+        // DS1: Ge the last move.
+        // DS2: Remove last move from the list
+        // DS3: Update cell
+        // DS4: Update Hashmaps.
+        // S5. Update turn
+
+        if(playerMoves.size() ==0){
+            System.out.println("No Move to Undo...");
+            return;
+        }
+
+        Move lastMove = playerMoves.get(playerMoves.size()-1);
+        playerMoves.remove(lastMove);
+
+        Cell cellToBeUpdated = lastMove.getCell();
+        cellToBeUpdated.setPlayer(null);
+        cellToBeUpdated.setCellState(CellState.EMPTY);
+
+        nextPlayerIndex--;
+        nextPlayerIndex = (nextPlayerIndex + players.size()) % players.size();
     }
 
     public void printBoard() {
