@@ -146,6 +146,10 @@ public class Game {
         cellToBeUpdated.setPlayer(null);
         cellToBeUpdated.setCellState(CellState.EMPTY);
 
+        for(GameWinningRule rule : winningRules){
+            rule.handleUndo(lastMove);
+        } // updating your hashmaps.
+
         nextPlayerIndex--;
         nextPlayerIndex = (nextPlayerIndex + players.size()) % players.size();
     }
