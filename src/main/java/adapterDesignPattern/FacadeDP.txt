@@ -1,0 +1,22 @@
+Facade design pattern is used to help client applications to easily interact with the system.
+
+Facade means Boundary/Outside fence
+
+Use the Facade pattern when you need to have a limited but straightforward interface to a complex subsystem.
+Often, subsystems get more complex over time. Even applying design patterns typically leads to creating more classes.
+A subsystem may become more flexible and easier to reuse in various contexts
+Use the Facade when you want to structure a subsystem into layers.
+You can reduce coupling between multiple subsystems by requiring them to communicate only through facades.
+If the facade becomes too big, consider extracting part of its behavior to a new, refined facade class.
+
+Example :
+    1. Amazon class and transaction
+    2. Video Converter - https://refactoring.guru/design-patterns/facade
+
+Amazon class - has all the methods and became complex class.
+Facade Design Pattern says the complex class methods are divided into one or more interfaces and reuses the functionality.
+It involves creating a simplified interface that hides the complexity and details of a subsystem or a group of components.
+
+Amazon class has multiple methods and includes different responsibilities.
+    1. Facade DP divides the responsibilities into different classes.
+    2. Using dependency will hide the implementation and follows Solid principles.

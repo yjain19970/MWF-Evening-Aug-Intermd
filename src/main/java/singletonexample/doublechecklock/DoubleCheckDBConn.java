@@ -11,7 +11,7 @@ public class DoubleCheckDBConn {
      * This will work in multi threaded ENV.
      *
      *
-     * @return
+     * @return DB connection
      */
     public static DoubleCheckDBConn createInstance(){
             if(dbConnection ==null){

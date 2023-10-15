@@ -1,0 +1,13 @@
+Abstract Design Pattern is one of the Creational Design Pattern
+Abstract Factory pattern is almost similar to Factory Pattern and is considered as another layer of abstraction over factory pattern.
+Abstract Factory patterns work around a super-factory which creates other factories.
+Abstract factory pattern implementation provides us with a framework that allows us to create objects that follow a general pattern.
+So at runtime, the abstract factory is coupled with any desired concrete factory which can create objects of the desired type.
+
+Few examples
+    1. Button and checkBox for mac and Windows
+    2. Car models and production in different countries - incomplete
+    3. Computer, PC and Servers factory
+    4. Chair, Sofa, CoffeeTable Furniture and Victorian and modern types
+
+Factory DP says Factory method is  a method in interface that returns instance of another specific class or subclass.

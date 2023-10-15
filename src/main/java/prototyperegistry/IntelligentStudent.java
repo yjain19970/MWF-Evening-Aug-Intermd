@@ -7,7 +7,7 @@ public class IntelligentStudent extends Student {
 
     }
     // COPY CONSTRUCTOR.
-    public IntelligentStudent(IntelligentStudent s) {
+    public IntelligentStudent (IntelligentStudent s) {
         super(s);
         this.iq = s.iq;
     }

@@ -1,0 +1,37 @@
+Adapter design pattern is one of the structural design pattern and its used so that two unrelated interfaces can work together.
+The object that joins these unrelated interface is called an Adapter.
+Adapter Design Pattern tells don’t depend on third parties deeply or on Concrete implementations and use Dependency
+Inversion Principle (Solid principle). Use Interfaces on code implementations.
+
+    Adapter in software system is a Intermediatory layer connects two interfaces or sources.
+    In terms of classes, deals with how classes should communicate.
+    Adapter is a simple like Mediator.
+
+Examples:
+    1. Mobile ports C port, USB, etc
+    2. Single sign on with multiple providers google, github, outlook
+    3. Library integration with 3rd parties change in future
+    4. PhonePe UP, Yes bank to Hdfc and ICICI bank.
+
+Problem statement:
+	 when we use third party libraries, future google API or other API may change their versions and features that effects our code implementations.
+	 Similar to that PhonePe example. Switched from Yes bank to HDFC and AXIS bank for UPI transactions.
+	This is what here structural design patterns deals.
+
+Steps – How to use ADP:
+     Always create Interface, whenever connecting to 3rd party
+     Add methods -> which you need to implement.
+
+https://github.com/Naman-Bhalla/lldSept2022/tree/master/src/main/java/designpatterns/adapter
+
+If your code is integrated with  any API directly and involves in a lot of tight coupling between your code and 3rd party API
+    It will effecting maintainability.
+
+    Solution for this is Dependency Inversion Principle.
+
+USE of ADAPTER DP:
+    Switching between Client and 3rd party is easy.
+
+java.util.Arrays#asList()
+java.io.InputStreamReader(InputStream) (returns a Reader)
+java.io.OutputStreamWriter(OutputStream) (returns a Writer)

@@ -1,12 +1,12 @@
 package builderdesignpattern;
 
-public class Student {
+public class  Student {
     String name;
     String email;
     int age;
     String phoneNo;
     double psp;
-    private NestedStudent nestedStudent; // nestedclass attribute
+    private NestedStudent nestedStudent; // nested class attribute
 
     private Student(StudentBuilder h) throws Exception {
         this.age = h.getAge();
@@ -29,12 +29,16 @@ public class Student {
         private String phoneNo;
         private NestedStudent nestedStudent;
 
+        public StudentBuilder(){
+
+        }
+
         // just validating and creating object of student.
         public Student build() throws Exception {
             if(this.getAge() > 100){
                 throw new Exception("Age should be less than 100");
             }
-            if(this.getPsp() <0){
+            if(this.getPsp() < 0){
                 throw new Exception("PSP should be > than 0");
             }
             // passed
@@ -59,6 +63,10 @@ public class Student {
 
         public String getPhoneNo() {
             return phoneNo;
+        }
+
+        public NestedStudent getNestedStudent() {
+            return nestedStudent;
         }
 
         public StudentBuilder setName(String name) {
@@ -86,21 +94,10 @@ public class Student {
             return this;
         }
 
-        public NestedStudent getNestedStudent() {
-            return nestedStudent;
-        }
-
         public StudentBuilder setNestedStudent(NestedStudent nestedStudent) {
             this.nestedStudent = nestedStudent;
             return this;
         }
     }
-
-
-
-
-
-
-
 
 }
