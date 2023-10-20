@@ -2,8 +2,10 @@ package parkingLot.repository;
 
 import parkingLot.models.Gate;
 
+import java.util.Optional;
+
 public interface IGateRepo {
 
-    Gate getGateById(Long id);
+    Optional<Gate> getGateById(Long id);
     Gate saveGate(Gate t);
 }

@@ -4,6 +4,7 @@ import parkingLot.models.ParkingLot;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class ParkingLotRepository {
     Map<Long, ParkingLot> parkingLotDB; // DB
@@ -14,8 +15,8 @@ public class ParkingLotRepository {
     }
 
 
-    public ParkingLot getParkingLotById(Long id){
-        return parkingLotDB.get(id);
+    public Optional<ParkingLot> getParkingLotById(Long id){
+        return Optional.ofNullable(parkingLotDB.get(id));
     }
 
     public ParkingLot saveParkingLot(ParkingLot lot){

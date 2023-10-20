@@ -3,6 +3,7 @@ package parkingLot.repository;
 import parkingLot.models.Gate;
 
 import java.util.Map;
+import java.util.Optional;
 
 public class GateRepository implements IGateRepo {
     private Map<Long, Gate> gateDB;
@@ -13,8 +14,8 @@ public class GateRepository implements IGateRepo {
     }
 
 
-    public Gate getGateById(Long id){
-        return gateDB.get(id);
+    public Optional<Gate> getGateById(Long id){
+        return Optional.ofNullable(gateDB.get(id));
     }
 
     public Gate saveGate(Gate t){

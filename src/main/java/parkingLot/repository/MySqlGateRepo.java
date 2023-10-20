@@ -2,9 +2,11 @@ package parkingLot.repository;
 
 import parkingLot.models.Gate;
 
+import java.util.Optional;
+
 public class MySqlGateRepo implements IGateRepo{
     @Override
-    public Gate getGateById(Long id) {
+    public Optional<Gate> getGateById(Long id) {
         return null;
     }
 

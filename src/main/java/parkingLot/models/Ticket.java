@@ -9,6 +9,15 @@ public class Ticket extends BaseModel  {
     private Gate gate;
     private Operator operator;
 
+    public Ticket(ParkingSpot parkingSpot, Date entryTime,
+                  Vehicle vehicle, Gate gate, Operator operator) {
+        this.parkingSpot = parkingSpot;
+        this.entryTime = entryTime;
+        this.vehicle = vehicle;
+        this.gate = gate;
+        this.operator = operator;
+    }
+
     public ParkingSpot getParkingSpot() {
         return parkingSpot;
     }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ParkingSpot extends BaseModel  {
     private int number;
-    private List<VehicleType> supportedVehicles;
+    private VehicleType supportedVehicleType;
     private SpotStatus spotStatus;
     private Vehicle vehicle;
 
@@ -16,12 +16,12 @@ public class ParkingSpot extends BaseModel  {
         this.number = number;
     }
 
-    public List<VehicleType> getSupportedVehicles() {
-        return supportedVehicles;
+    public VehicleType getSupportedVehicleType() {
+        return supportedVehicleType;
     }
 
-    public void setSupportedVehicles(List<VehicleType> supportedVehicles) {
-        this.supportedVehicles = supportedVehicles;
+    public void setSupportedVehicleType(VehicleType supportedVehicleType) {
+        this.supportedVehicleType = supportedVehicleType;
     }
 
     public SpotStatus getSpotStatus() {
