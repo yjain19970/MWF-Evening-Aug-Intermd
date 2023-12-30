@@ -109,12 +109,17 @@ public class Game {
     }
 
     private boolean validateMove(Move currMove) {
-        if(currMove.getCell().getCellState().equals(CellState.FILLED)){
-            return false;
-        }
+        // if(currMove.getCell().getCellState().equals(CellState.FILLED)){
+        //     return false;
+        // }
 
+        // the above Condition is wrong since we are initializing the cellstate to empty for currMove
+        // We need to check the Board current row and col
         int row = currMove.getCell().getRow();
         int col = currMove.getCell().getCol();
+        if(board.getCells().get(row).get(col).cellState.equals(CellState.FILLED)) {
+            return false;
+        }
 
         if (row >= board.getSize()) {
             return false;
