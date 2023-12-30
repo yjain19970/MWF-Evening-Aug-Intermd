@@ -9,6 +9,7 @@ import tictactoe.model.types.BotDifficultyLevel;
 import tictactoe.model.types.GameState;
 import tictactoe.model.types.PlayerType;
 import tictactoe.strategy.winning.ColumnWinningRule;
+import tictactoe.strategy.winning.DiagonalWinningRule;
 import tictactoe.strategy.winning.GameWinningRule;
 import tictactoe.strategy.winning.RowWinningRule;
 
@@ -35,6 +36,7 @@ public class Client {
         List<GameWinningRule> rules = new ArrayList<>();
         rules.add(new RowWinningRule());
         rules.add(new ColumnWinningRule());
+        rules.add(new DiagonalWinningRule());
 
         Game game = gameController.startGame(players, rules, 3);
 
